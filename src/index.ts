@@ -3,7 +3,7 @@ export class Navigation {
 
   /**
    * Navigate to the provided link
-   * 
+   *
    * @param {string} link - Link to navigate to
    * @param {boolean} fullPageReload - (optional) partial page reload - false / or full page reload - true
    */
@@ -14,7 +14,7 @@ export class Navigation {
       const navState = { url: link };
 
       // Adds the new navigation state to the browser history
-      history.pushState(navState, null, link);
+      history.replaceState(navState, null, link);
 
       // Check to trigger SharePoint navigation handler to partially reload the page
       let newPopState = null;
@@ -53,6 +53,6 @@ export class Navigation {
     }
 
     // Worst case, redirect the old way
-    location.href = link;
+    location.replace(link);
   }
 }
